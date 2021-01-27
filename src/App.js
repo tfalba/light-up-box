@@ -35,17 +35,17 @@ function App () {
 }
 
 function LightBox (props) {
-  const [isLit, setIsLit] = useState(false)
+  const [isLit, setIsLit] = useState('black')
   const { box } = props
   const { color } = props
 
   return (
     <div className='shell'>
       {box && (
-        <div> {isLit
-          ? <div className={`box color-on ${color}`} onMouseEnter={() => setIsLit(false)} />
+        <div> {(isLit !== color && isLit === 'black')
+          ? <div className={`box color-off ${isLit}`} onMouseEnter={() => setIsLit(color)} />
 
-          : <div className='box color-off' onMouseEnter={() => setIsLit(true)} />}
+          : <div className={`box color-off ${isLit}`} onMouseEnter={() => setIsLit('black')} />}
         </div>)}
     </div>
 
